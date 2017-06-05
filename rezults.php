@@ -26,7 +26,7 @@
 
 		$Tipas = $_POST["Tipas"];
 		$Spalva = $_POST["Spalva"];	
-		$sql = "SELECT  Kodas, Pavadinimas, Spalva, Kategorija, Sand, Lik, Rez, Yra, Kaina, TiekejoPavadinimas, SuPVM FROM baldailent where Pavadinimas = '". $Tipas . "' AND Spalva = '". $Spalva ."'";
+		$sql = "SELECT  Kodas, Pavadinimas, Spalva, Medziaga, Kategorija, Sand, Lik, Rez, Yra, Kaina, TiekejoPavadinimas, SuPVM FROM baldailent where Pavadinimas = '". $Tipas . "' AND Spalva = '". $Spalva ."'";
 		$result = mysqli_query($conn, $sql);
 
 
@@ -36,7 +36,8 @@
 
 
  ?> 
-<table style="width:100%">
+<table style="width:100%;
+ border:1px solid black">
 <tr>
 	<td>
 		<?php echo $value["Kodas"];?>
@@ -46,6 +47,9 @@
 	</td>
 	<td>
 		<?php echo $value["Spalva"];?>
+	</td>
+	<td>
+		<?php echo $value["Medziaga"];?>
 	</td>
 	<td>
 		<?php echo $value["TiekejoPavadinimas"];?>

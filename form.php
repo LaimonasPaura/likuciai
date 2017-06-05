@@ -14,17 +14,27 @@
 
 		$Tipas = $_POST["Tipas"];
 		$Spalva = $_POST["Spalva"];	
-		$sql = "SELECT  Kodas, Pavadinimas, Spalva, Kategorija, Sand, Lik, Rez, Yra, Kaina, TiekejoPavadinimas, SuPVM FROM baldailent where Pavadinimas = '". $Tipas . "' AND Spalva = '". $Spalva ."'";
+		$Medziaga = $_POST["Medziaga"];
+		$sql = "SELECT  Kodas, Pavadinimas, Spalva, Medziaga, Kategorija, Sand, Lik, Rez, Yra, Kaina, TiekejoPavadinimas, SuPVM FROM baldailent where Pavadinimas = '". $Tipas . "' AND Spalva = '". $Spalva ."' AND Medziaga = '". $Medziaga ."'";
 		$result = mysqli_query($conn, $sql);
 
 
-		$value = mysqli_fetch_assoc($result);
+		// $value = mysqli_fetch_assoc($result);
 
 // echo file_get_contents('rezults.php');
-
-
+if ($result->num_rows > 0) {
+    echo "<table><tr><th>Kodas</th><th>Pavadinimas</th><th>Spalva</th><th>Medziaga</th><th>TiekejoPavadinimas</th><th>Kategorija</th><th>Sand</th><th>Lik</th><th>Rez</th><th>Yra</th><th>Kaina</th><th>SuPVM</th></tr>";
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>".$row["Kodas"]."</td><td>".$row["Pavadinimas"]."</td><td>".$row["Spalva"]."</td><td>".$row["Spalva"]."</td><td>".$row["Spalva"]."</td><td>".$row["Spalva"]."</td><td>".$row["Spalva"]."</td><td>".$row["Spalva"]."</td><td>".$row["Spalva"]."</td><td>".$row["Spalva"]."</td><td>".$row["Spalva"]."</td><td>".$row["Spalva"]."</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+$conn->close();
  ?> 
-<table style="width:100%">
+<!-- <table style="width:100%">
 <tr>
 	<td>
 		<?php echo $value["Kodas"];?>
@@ -34,6 +44,9 @@
 	</td>
 	<td>
 		<?php echo $value["Spalva"];?>
+	</td>
+	<td>
+		<?php echo $value["Medziaga"];?>
 	</td>
 	<td>
 		<?php echo $value["TiekejoPavadinimas"];?>
@@ -60,4 +73,4 @@
 		<?php echo $value["SuPVM"];?>
 	</td>
 </tr>
-</table>
+</table> -->
